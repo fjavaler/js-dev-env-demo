@@ -37,7 +37,8 @@
     "wrappy": "^1.0.2",
     "yallist": "^3.0.2"
   },
-  "devDependencies": {
+  "devDependencies": 
+  {
     "babel-cli": "^6.26.0",
     "babel-core": "6.17.0",
     "babel-loader": "6.2.5",
