@@ -2,20 +2,21 @@
   "name": "javascript-development-environment",
   "version": "1.0.0",
   "description": "JavaScript development environment Pluralsight course by Cory House",
-  "scripts": 
-  {
+  "scripts": {
     "prestart": "babel-node buildScripts/startMessage.js",
-    "start": "npm-run-all --parallel security-check open:src lint:watch",
+    "start": "npm-run-all --parallel security-check open:src lint:watch security-check test test:watch generate-mock-data",
     "open:src": "babel-node buildScripts/srcServer.js",
     "lint": "esw webpack.config.* src buildSripts --color",
     "lint:watch": "npm run lint -- --watch",
     "security-check": "nsp check",
-    "test": "mocha --reporter progress buildScripts/testSetup.js \"src/**/*.test.js\""
+    "test": "mocha --reporter progress buildScripts/testSetup.js \"src/**/*.test.js\"",
+    "test:watch": "npm run test -- --watch",
+    "generate-mock-data": "babel-node buildScripts/generateMockData",
+    "start-mockapi": "json-server --watch src/api/db.json --port 3001"
   },
   "author": "Cory House",
   "license": "MIT",
-  "dependencies": 
-  {
+  "dependencies": {
     "ansi-regex": "^3.0.0",
     "balanced-match": "^1.0.0",
     "brace-expansion": "^1.1.11",
@@ -23,6 +24,7 @@
     "concat-map": "0.0.1",
     "console-control-strings": "^1.1.0",
     "debug": "^3.1.0",
+    "fetch": "^1.1.0",
     "inherits": "^2.0.3",
     "is-fullwidth-code-point": "^2.0.0",
     "minimatch": "^3.0.4",
@@ -38,8 +40,7 @@
     "wrappy": "^1.0.2",
     "yallist": "^3.0.2"
   },
-  "devDependencies": 
-  {
+  "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "6.17.0",
     "babel-loader": "6.2.5",
